@@ -1,0 +1,16 @@
+@startsalt
+
+{
+List of configuration
+
+{Department: |^ Бухгалтерия^}
+{[Create] | [Edit] | [Delete] | [X] Update required}
+==
+{#
+Configuration|Current ver.  |  Actual ver. | Department | Status
+Комплексная автоматизация|2.5.12.270|  2.5.16.115 | Бухгалтерия | Need update
+}
+==
+{[<]|[>]|limit:| ^ 20 ^}
+}
+@endsalt

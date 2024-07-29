@@ -1,0 +1,20 @@
+@startsalt
+
+{
+List of configurations. If Department is empty - all configurations
+If Update required checked - only with 'Need update' status
+
+
+{Department: |^ Финансовая дирекция^}
+{[Create] | [Edit] | [Delete] | [] Update required}
+==
+{#
+Configuration|Current ver.  |  Latest ver. | Department | Status
+Комплексная автоматизация|2.5.12.270|2.5.16.115| Финансовая дирекция |  Need update
+Бухгалтерия предприятия|3.0.152.28| 3.0.152.28 | Бухгалтерия |Actual
+Зарплата и управление персоналом|3.1.29.78| N/A |Отдел расчета ЗП |   New
+}
+==
+{[<]|[>]|limit:| ^ 20 ^}
+}
+@endsalt

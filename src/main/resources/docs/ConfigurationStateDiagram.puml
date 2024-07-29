@@ -1,0 +1,21 @@
+@startuml
+state "NEW" as NewState
+state "NEED_UPDATE" as NeedUpdateState
+state "ACTUAL" as ActualState
+state "ERROR" as ErrorState
+state c  <<choice>> : check
+
+[*] --> NewState : createConfiguration()
+NewState --> c : checkForUpdates()
+c --> NeedUpdateState : [actualVer < latestVer]
+c --> ActualState : [actualVer = latestVer]
+c --> ErrorState : [actualVer > latestVer]
+
+NeedUpdateState --> c : checkForUpdates()
+ActualState --> c : checkForUpdates()
+ErrorState --> c : checkForUpdates()
+@enduml
+
+@startuml
+testdot
+@enduml

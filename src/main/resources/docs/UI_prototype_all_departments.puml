@@ -1,0 +1,17 @@
+@startsalt
+
+{
+List of departments
+
+{[Create] | [Edit] | [Delete]}
+==
+{#
+Department|Parent department  |Head's Phone  | Head's Email | Head's Name | Note
+Финансовая дирекция|N/A|+7(495)222-33-22|   | vector@mail.com | Паниковский М.С. |  Примечание 1
+Бухгалтерия| Финансовая дирекция|+7(495)777-33-11| bender_i@ya.ru | Бендер О.И. |  Примечание 2
+Отдел расчета ЗП| Финансовая дирекция|+7(495)888-91-11| bez@yahoo.com | Балаганов А.А.|  Примечание 3
+}
+==
+{[<]|[>]|limit:| ^ 20 ^}
+}
+@endsalt

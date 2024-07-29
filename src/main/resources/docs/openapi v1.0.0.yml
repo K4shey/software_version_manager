@@ -1,0 +1,419 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Software Versions Manager
+servers:
+  - url: http://localhost:8080/api/v1
+paths:
+  /configurations:
+    get:
+      summary: List all configurations
+      tags:
+        - configurations
+      parameters:
+        - name: status
+          in: query
+          description: Filter by configuration status
+          required: false
+          schema:
+            type: string
+            enum: [NEW, ACTUAL, NEED_UPDATE, ERROR]
+        - name: departmentId
+          in: query
+          description: Filter by department ID
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - name: page
+          in: query
+          description: Page number for pagination
+          required: false
+          schema:
+            type: integer
+            default: 0
+            format: int32
+        - name: size
+          in: query
+          description: Page size for pagination
+          required: false
+          schema:
+            type: integer
+            default: 20
+            format: int32
+      responses:
+        '200':
+          description: A paged array of configurations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/OneCConfigurationDto"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Create a configuration
+      tags:
+        - configurations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OneCConfigurationRequestDto'
+        required: true
+      responses:
+        '201':
+          description: Configuration created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OneCConfigurationDto'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /configurations/{id}:
+    get:
+      summary: Get a specific configuration
+      tags:
+        - configurations
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the configuration to retrieve
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Configuration details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OneCConfigurationDto'
+        '404':
+          description: Configuration not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update a specific configuration
+      tags:
+        - configurations
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the configuration to update
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OneCConfigurationRequestDto'
+        required: true
+      responses:
+        '200':
+          description: Configuration updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OneCConfigurationDto'
+        '400':
+          description: Invalid configuration supplied
+        '404':
+          description: Configuration not found
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete a specific configuration
+      tags:
+        - configurations
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the configuration to delete
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Configuration deleted
+        '404':
+          description: Configuration not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /departments:
+    get:
+      summary: List all departments
+      tags:
+        - departments
+      parameters:
+        - name: page
+          in: query
+          description: Page number for pagination
+          required: false
+          schema:
+            type: integer
+            default: 0
+            format: int32
+        - name: size
+          in: query
+          description: Page size for pagination
+          required: false
+          schema:
+            type: integer
+            default: 20
+            format: int32
+      responses:
+        '200':
+          description: A paged array of departments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DepartmentDto'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a department
+      tags:
+        - departments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Department'
+        required: true
+      responses:
+        '201':
+          description: Department created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentDto'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /departments/{id}:
+    get:
+      summary: Get a specific department
+      tags:
+        - departments
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the department to retrieve
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Department details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentDto'
+        '404':
+          description: Department not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update a specific department
+      tags:
+        - departments
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the department to update
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Department'
+        required: true
+      responses:
+        '200':
+          description: Department updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentDto'
+        '400':
+          description: Invalid department supplied
+        '404':
+          description: Department not found
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete a specific department
+      tags:
+        - departments
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the department to delete
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Department deleted
+        '404':
+          description: Department not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Department:
+      type: object
+      properties:
+        departmentId:
+          type: integer
+          format: int64
+        departmentName:
+          type: string
+        parentDepartment:
+          $ref: '#/components/schemas/Department'
+        headName:
+          type: string
+        headPhone:
+          type: string
+        headEmail:
+          type: string
+        note:
+          type: string
+    OneCConfigurationDto:
+      type: object
+      properties:
+        configurationId:
+          type: integer
+          format: int64
+        configurationName:
+          type: string
+        configurationAlias:
+          type: string
+        currentVersion:
+          type: string
+        latestVersion:
+          type: string
+        status:
+          type: string
+          enum:
+            - NEW
+            - ACTUAL
+            - NEED_UPDATE
+            - ERROR
+        department:
+          $ref: '#/components/schemas/Department'
+    OneCConfigurationRequestDto:
+      type: object
+      properties:
+        configurationName:
+          type: string
+        configurationAlias:
+          type: string
+        currentVersion:
+          type: string
+        latestVersion:
+          type: string
+        departmentId:
+          type: integer
+          format: int64
+    ConfigurationStatus:
+      type: string
+      enum:
+        - NEW
+        - ACTUAL
+        - NEED_UPDATE
+        - ERROR
+    DepartmentDto:
+      type: object
+      properties:
+        departmentId:
+          type: integer
+          format: int64
+        departmentName:
+          type: string
+        parentDepartment:
+          $ref: '#/components/schemas/Department'
+        headName:
+          type: string
+        headPhone:
+          type: string
+        headEmail:
+          type: string
+        note:
+          type: string
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

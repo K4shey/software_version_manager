@@ -1,0 +1,19 @@
+@startuml
+@startsalt
+{  Edit configuration
+
+Name:|^Комплексная автоматизация^
+
+Current version: |
+"2.5.12.270"
+
+Latest version: |
+<color:#9a9a9a> 2.5.16.115
+
+Department :|^ Бухгалтерия^
+
+Status :|<color:#9a9a9a>Need update
+{[Ok] | [Cancel] }
+}
+@endsalt
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+@startsalt
+{  Create new department
+
+Name:|
+"Бухгалтерия"
+
+Parent department:|
+"Финансовая дирекция"
+
+Head's Phone: |
+"+7(495)777-33-11"
+
+Head's E-mail: |
+"bender_i@ya.ru"
+
+Head's Name: |
+"Бендер О.И."
+
+
+Note: |
+{+
+Входит в состав Финансовой дирекции
+.
+"                                               "
+}
+
+{[Save] | [Cancel] }
+}
+@endsalt
+@enduml

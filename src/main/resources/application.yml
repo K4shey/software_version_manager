@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: software-version-manager
+  datasource:
+    url: jdbc:postgresql://localhost:5432/software_manager_db
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    enabled: true
+    url: jdbc:postgresql://localhost:5432/software_manager_db
+    user: user
+    password: password
+    schemas: public
+    locations: classpath:db/migration
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+server:
+  port: 8090
+vendor:
+  update-url: "https://update-api.1c.ru/update-platform/programs/update/info"
+  check-interval-in-minutes: 5
+telegram:
+  bot-token:
+  chat-id:

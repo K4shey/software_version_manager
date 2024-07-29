@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: software-version-manager
+  datasource:
+    url: jdbc:postgresql://localhost:5432/software_manager_db_test
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    enabled: true
+    url: jdbc:postgresql://localhost:5432/software_manager_db_test
+    user: user
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+server:
+  port: 8090

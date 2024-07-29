@@ -1,0 +1,34 @@
+@startuml
+@startsalt
+{  Edit department
+
+Name:|
+"Финансовая дирекция"
+
+Parent department:|
+"                   "
+
+
+Head's Phone: |
+"+7(495)222-33-22"
+
+Head's E-mail: |
+"vector@mail.com"
+
+Head's name: |
+"Паниковский М.С."
+
+
+Note: |
+{+
+В состав входят подразделения:
+Бухгалтерия
+Отдел расчета ЗП
+.
+"                                               "
+}
+
+{[Ok] | [Cancel] }
+}
+@endsalt
+@enduml

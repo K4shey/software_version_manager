@@ -1,0 +1,18 @@
+@startuml
+@startsalt
+{  Create new configuration
+
+Name:|^Комплексная автоматизация^
+
+Current version: |
+"2.5.12.270"
+
+Latest version: |
+<color:#9a9a9a> 1.1.1.1
+
+Department :|^ Бухгалтерия^
+{[Save] | [Cancel] }
+}
+
+@endsalt
+@enduml
